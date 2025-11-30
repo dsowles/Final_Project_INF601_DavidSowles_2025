@@ -1,0 +1,27 @@
+[tool.ruff]
+# Specify the minimum Python version your project supports
+target-version = "py311"
+line-length = 88
+
+# Include the Django-specific rule set (DJ)
+[tool.ruff.lint]
+# Select the rule sets you want to enforce.
+# F: Pyflakes for syntax errors.
+# E/W: pycodestyle errors and warnings.
+# I: isort for import sorting.
+# DJ: flake8-django rules for common Django issues.
+# Other rule sets like UP (pyupgrade) or N (pep8-naming) can also be added.
+select = ["E", "F", "I", "W", "DJ"]
+
+# Ignore rules for specific directories.
+# It is important to ignore migrations and potentially manage.py
+ignore = []
+exclude = [
+    "**/migrations/*.py",
+    "manage.py",
+    ".git",
+    ".venv",
+    ".mypy_cache",
+    ".pytest_cache",
+    "project_setup_info/"
+]
