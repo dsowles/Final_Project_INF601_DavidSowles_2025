@@ -66,3 +66,6 @@ def account_dashboard(request):
     return render(request, "account/dashboard.html", {
         "posts": posts,
 })
+
+def about(request):
+    return render(request, 'about.html')

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}About - The Fiction Archive{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h1>About The Fiction Archive</h1>
+        <p class="lead">A community-driven hub for book lovers, writers, and curious minds.</p>
+    </div>
+
+    <!-- Overview Section -->
+    <div class="mb-5">
+        <h2>Our Mission</h2>
+        <p>
+            The Fiction Archive is a website dedicated to celebrating the world of books. 
+            We aim to provide a platform where readers, writers, and enthusiasts can share 
+            ideas, insights, and discussions about literature. Whether you want to write 
+            a review, start a discussion, or explore information about your favorite books, 
+            this is the place to do it.
+        </p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="mb-5">
+        <h2>What We Offer</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-pen-nib fa-2x mb-3"></i>
+                        <h5 class="card-title">Blog</h5>
+                        <p class="card-text">
+                            Share your thoughts and opinions on books, write detailed reviews, 
+                            and explore articles from other members of the community.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-comments fa-2x mb-3"></i>
+                        <h5 class="card-title">Forum</h5>
+                        <p class="card-text">
+                            Join group discussions, participate in book club-style conversations, 
+                            and connect with other readers who share your interests.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-book fa-2x mb-3"></i>
+                        <h5 class="card-title">Mini Wiki</h5>
+                        <p class="card-text">
+                            Explore or contribute to articles about book characters, 
+                            events, locations, and other literary elements to help 
+                            the community build a shared knowledge base.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology Section -->
+    <div class="mb-5">
+        <h2>Built With</h2>
+        <p>
+            The Fiction Archive is powered by Django for the backend, with Bootstrap 5 providing 
+            responsive styling and Font Awesome icons for a polished look. For book data, 
+            external APIs like Google Books or Open Library may be used to enrich content.
+        </p>
+        <p>
+            SQLite3 serves as our database, storing user-generated content efficiently while 
+            keeping setup simple.
+        </p>
+    </div>
+
+    <!-- Community Invitation -->
+    <div class="text-center">
+        <h2>Join Us</h2>
+        <p>
+            Whether you are a casual reader or a passionate writer, The Fiction Archive 
+            welcomes you to explore, share, and contribute. Sign up today and be part 
+            of our growing literary community!
+        </p>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg mt-3">Sign Up</a>
+    </div>
+</div>
+{% endblock %}
