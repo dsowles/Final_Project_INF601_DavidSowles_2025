@@ -2,6 +2,8 @@
 
 {% block title %}Delete Post{% endblock %}
 
+{% block account-controls %}<a href="{% url 'account-dashboard' %}" class="btn btn-outline-light" >My Blogs</a>{% endblock %}
+
 {% block content %}
 <div class="container py-5" style="max-width: 600px;">
     <h2 class="mb-4 text-danger">Delete Blog Post</h2>

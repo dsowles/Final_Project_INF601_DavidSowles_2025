@@ -2,6 +2,8 @@
 
 {% block title %}The Fiction Archive - Blog{% endblock %}
 
+{% block account-controls %}<a href="{% url 'account-dashboard' %}" class="btn btn-outline-light" >My Blogs</a>{% endblock %}
+
 <!-- Child template head extensions: links, other metadata, etc. -->
 {% block extra-head %}
 {% load static %}

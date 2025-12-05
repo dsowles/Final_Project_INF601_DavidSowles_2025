@@ -36,6 +36,7 @@
             <div class="text-end">
                 {% if user.is_authenticated %}
                     <span class="text-white me-2">Hello, {{ user.username }}!</span>
+                {% block account-controls %}{% endblock %}
                     <a href="{% url 'logout' %}" class="btn btn-outline-light">Logout</a>
                 {% else %}
                     <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
