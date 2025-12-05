@@ -1,7 +1,9 @@
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Post
+from .forms import PostForm
 
 # Create your views here.
 
@@ -13,14 +15,41 @@ def detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     return render(request, 'detail.html', {'post': post})
 
+@login_required
 def create(request):
-    return HttpResponse('Create Blog Page')
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save()
+            return redirect("blog-detail", slug=post.slug)
+    else:
+        form = PostForm()
 
-def delete(request):
-    return HttpResponse('Delete Blog Page')
+    return render(request, "create.html", {"form": form})
 
-def update(request):
-    return HttpResponse('Update Blog Page')
+@login_required
+def delete(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+
+    if request.method == "POST":
+        post.delete()
+        return redirect("home")
+
+    return render(request, "delete.html", {"post": post})
+
+@login_required
+def update(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('blog-detail', slug=post.slug)
+    else:
+        form = PostForm(instance=post)
+
+    return render(request, 'update.html', {'form': form, 'post': post})
 
 def search(request):
     return HttpResponse('Search Blog Page')
