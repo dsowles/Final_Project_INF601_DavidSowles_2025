@@ -10,7 +10,45 @@
 
 {% block content %}
 
-    <h1>The Main Page of the Blog</h1>
-    <a href="">test link</a>
+<div class="container py-5">
+
+    <h1 class="display-4 fw-bold text-center mb-4">The Fiction Archive Blog</h1>
+    <p class="lead text-center mb-5">Thoughts, stories, updates, and creative insights.</p>
+
+    {% if posts %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+            {% for post in posts %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+
+                    {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% else %}
+                    <img src="{% static 'img/default_thumbnail.jpg' %}" class="card-img-top" alt="Default">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text text-muted">
+                            {{ post.content|truncatechars:120 }}
+                        </p>
+                        <a href="{% url 'blog-detail' post.slug %}" class="btn btn-primary">Read More</a>
+                    </div>
+
+                    <div class="card-footer text-muted">
+                        {{ post.created_at|date:"F j, Y" }}
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <p class="text-center">No blog posts found.</p>
+    {% endif %}
+
+</div>
 
 {% endblock %}
