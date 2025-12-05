@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.db.models import Q
 from .models import Post
 from .forms import PostForm
 
@@ -54,7 +54,19 @@ def update(request, slug):
     return render(request, 'update.html', {'form': form, 'post': post})
 
 def search(request):
-    return HttpResponse('Search Blog Page')
+    query = request.GET.get("q", "")
+
+    results = []
+    if query:
+        results = Post.objects.filter(
+            Q(title__icontains=query) | 
+            Q(content__icontains=query)
+        ).filter(published=True).order_by('-created_at')
+
+    return render(request, "search.html", {
+        "query": query,
+        "results": results,
+    })
 
 
 

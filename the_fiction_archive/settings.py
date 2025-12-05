@@ -30,19 +30,23 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# INSTALLED_APPS lists all Django apps that are enabled for this project.
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.admin', # The admin interface site
+    'django.contrib.auth',  # Core authentication framework and default models
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    'django.contrib.sessions',  # Session framework
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    "crispy_forms",
-    "crispy_bootstrap5",
-    'blog',
-    'accounts',
+    'django.contrib.staticfiles',  # Static file serving infrastructure
+    "crispy_forms", # A popular app for easily styling Django forms
+    "crispy_bootstrap5",    # Renders crispy forms using Bootstrap 5 framework classes
+    'blog', # Custom app for blog functionality
+    'accounts', # Custom app for user authentication/profile management
 ]
 
+
+# These components process requests before hitting the views and responses leaving 
+# the server.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,12 +57,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Defines the main URL configuration file (e.g., project_name/urls.py)
 ROOT_URLCONF = 'the_fiction_archive.urls'
 
+# TEMPLATES configures Django's template engine(s).
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # DIRS specifies directories where Django should look for templates
+        # that are not inside app directories
         'DIRS': [BASE_DIR / 'templates'],
+        # APP_DIRS set to True tells Django to look for 'templates/' directories inside individual apps
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,8 +128,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+# The URL prefix for static files when served in development or production
 STATIC_URL = 'static/'
-
+# Directories to search for static files in addition to the per-app static/ directories
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
@@ -130,10 +140,14 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# URL to redirect to after a user logs in successfully
 LOGIN_REDIRECT_URL = "home"
+# URL to redirect to after a user logs out successfully
 LOGOUT_REDIRECT_URL = "home"
+# The URL where requests are redirected for login if required by a login_required(
 LOGIN_URL = "login"
 
+# Lists which front-end frameworks (template packs) are allowed for crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+# Sets the default template pack to use for rendering all crispy forms in the project
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-

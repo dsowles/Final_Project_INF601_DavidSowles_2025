@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Search Results</h2>
+
+    {% if query %}
+        <p class="text-muted">Showing results for: <strong>{{ query }}</strong></p>
+    {% endif %}
+
+    <hr>
+
+    {% if results %}
+        {% for post in results %}
+            <div class="mb-4">
+                <h3>
+                    <a href="{% url 'blog-detail' post.slug %}">{{ post.title }}</a>
+                </h3>
+                <p class="text-muted">{{ post.created_at|date:"M d, Y" }} by {{ post.author }}</p>
+                <p>{{ post.content|truncatewords:30 }}</p>
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p class="text-muted">No posts found.</p>
+    {% endif %}
+</div>
+{% endblock %}

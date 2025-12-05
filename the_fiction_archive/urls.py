@@ -19,8 +19,15 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    # Route for the admin site, using Django's default admin URLs
     path('admin/', admin.site.urls),
+    # Route for all URLs starting with 'accounts/',
+    # which delegates handling to the 'accounts' app's urls.py file
     path('accounts/', include('accounts.urls')),
+
+    # Route for the root URL (''), which directs requests to the 'index' view function
+    # from the 'blog' app. The 'name="home"' provides a simple way to refer to this URL
+    # path programmatically in Django code.
     path('', views.index, name='home'),
     path('blog/', include('blog.urls')),
 ]
