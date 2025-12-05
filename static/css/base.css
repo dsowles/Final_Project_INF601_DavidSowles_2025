@@ -1,0 +1,17 @@
+/**************************************************/
+/*       Website Header Styles                    */
+/**************************************************/
+
+#site-header {
+    background-color: rgb(63, 25, 2) !important;
+
+}
+
+
+/*    End of Website Header Styles                */
+/**************************************************/
+
+h1 {
+    font-size: 3rem;
+    color: rgb(211, 168, 24);
+}
