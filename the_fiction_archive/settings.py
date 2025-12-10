@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 ]
 
 
-# These components process requests before hitting the views and responses leaving 
+# These components process requests before hitting the views and responses leaving
 # the server.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,7 +67,8 @@ TEMPLATES = [
         # DIRS specifies directories where Django should look for templates
         # that are not inside app directories
         'DIRS': [BASE_DIR / 'templates'],
-        # APP_DIRS set to True tells Django to look for 'templates/' directories inside individual apps
+        # APP_DIRS set to True tells Django to look for 'templates/' directories inside
+        # individual apps.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,6 +135,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
