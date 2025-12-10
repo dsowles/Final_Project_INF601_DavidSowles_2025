@@ -61,3 +61,7 @@ python manage.py runserver
 * SQLite3 (default Django database)  
 * Bootstrap 5 (via crispy-bootstrap5)  
 * Pillow (for image handling)  
+
+### Author
+
+* David A. Sowles
