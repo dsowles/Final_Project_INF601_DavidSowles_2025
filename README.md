@@ -25,6 +25,10 @@ pwd
 2. Setup the virtual environment:
 
 ```bash
+# Virtual environment setup.
+python -m venv .venv
+
+# Activate the virtual environment
 source venv/Scripts/activate
 ```
 
